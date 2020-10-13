@@ -1,13 +1,25 @@
 import React from 'react';
-import Navbar from './components/navbar';
-import BookList from './components/bookList';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Footer from './components/Footer';
+import Header from './components/Header';
+import { Container } from 'react-bootstrap';
+import HomeScreen from './screens/HomeScreen';
+import ProductScreen from './screens/ProductScreen';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <Navbar />
-      <BookList />
-    </div>
+    <BrowserRouter>
+      <Header />
+      <main className="py-3">
+        <Container>
+          <Switch>
+            <Route exact path="/" component={HomeScreen} />
+            <Route path="/product/:id" component={ProductScreen} />
+          </Switch>
+        </Container>
+      </main>
+      <Footer /> 
+    </BrowserRouter>
   );
 }
 
